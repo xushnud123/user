@@ -25,8 +25,8 @@ function App() {
     return () => unSub();
   }, []);
 
-  const handleEdit = async (todo, title) => {
-    await updateDoc(doc(firebase, "product", todo.id), { title: title });
+  const handleEdit = async (todo, number) => {
+    await updateDoc(doc(firebase, "product", todo.id), { number: number });
   };
   const toggleComplete = async (todo) => {
     await updateDoc(doc(firebase, "product", todo.id), {
@@ -39,15 +39,17 @@ function App() {
   return (
     <div>
       <User />
-      {todos.map((todo) => (
-        <Todo
-          key={todo.id}
-          todo={todo}
-          toggleComplete={toggleComplete}
-          handleDelete={handleDelete}
-          handleEdit={handleEdit}
-        />
-      ))}
+      <div style={{ marginBottom: 20 }}>
+        {todos.map((todo) => (
+          <Todo
+            key={todo.id}
+            todo={todo}
+            toggleComplete={toggleComplete}
+            handleDelete={handleDelete}
+            handleEdit={handleEdit}
+          />
+        ))}
+      </div>
     </div>
   );
 }
