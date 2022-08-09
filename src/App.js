@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from "react";
 import Todo from "./components/todo/todo";
 import User from "./components/user/user";
@@ -13,6 +14,9 @@ import firebase from "./firebase/firebase";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const date = new Date().getDate();
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth();
   useEffect(() => {
     const q = query(collection(firebase, "product"));
     const unSub = onSnapshot(q, (querySnapshot) => {
@@ -26,7 +30,12 @@ function App() {
   }, []);
 
   const handleEdit = async (todo, number) => {
-    await updateDoc(doc(firebase, "product", todo.id), { number: number });
+    await updateDoc(doc(firebase, "product", todo.id), {
+      number: number,
+      date: date,
+      year: year,
+      month:month+1
+    });
   };
   const toggleComplete = async (todo) => {
     await updateDoc(doc(firebase, "product", todo.id), {

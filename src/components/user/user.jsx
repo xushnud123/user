@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from "react";
 import firebase from "../../firebase/firebase";
 import { collection, addDoc } from "firebase/firestore";
@@ -6,6 +7,9 @@ import classes from "./user.module.scss";
 const User = () => {
   const [title, setTitle] = useState();
   const [number, setNumber] = useState();
+  const date = new Date().getDate()
+  const year = new Date().getFullYear()
+  const month = new Date().getMonth();
   useEffect(() => {}, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,6 +17,9 @@ const User = () => {
       await addDoc(collection(firebase, "product"), {
         title,
         number,
+        date,
+        year,
+        month:month+1,
         completed: false,
       });
       setTitle("");
