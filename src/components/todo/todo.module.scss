@@ -96,7 +96,7 @@
         transition: all linear 0.225s;
       }
       .delete {
-        display: none;
+        display: none !important;
         position: absolute;
         z-index: 1;
         right: 0;
