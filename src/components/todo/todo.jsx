@@ -26,7 +26,7 @@ export default function Todo({
     <div className={classes.todo}>
       <div className={classes.card}>
         <div className={classes.inputs}>
-          <label htmlFor={`${todo.title}`}>{todo.title} 0{todo.date}. {todo.year}</label>
+          <label htmlFor={`${todo.title}`}>{todo.title}</label>
           <input
             style={{ textDecoration: todo.completed && "line-through" }}
             type="number"

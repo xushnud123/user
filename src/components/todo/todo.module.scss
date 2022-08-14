@@ -16,12 +16,14 @@
     transition: all linear 0.225s;
     position: relative;
     .inputs {
-      width: 85%;
+      width: 80%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      flex-direction: column;
       label {
+        width: 100%;
         font-size: 20px;
         line-height: 25px;
         color: #000;
@@ -40,6 +42,9 @@
         &::-webkit-inner-spin-button {
           -webkit-appearance: none;
           margin: 0;
+        }
+        @media screen and (max-width: 576px) {
+          padding-left: 10px;
         }
       }
     }
@@ -67,6 +72,7 @@
         cursor: pointer;
         border-radius: 50%;
         transition: all linear 0.225s;
+        display: none;
         svg {
           color: rgb(244, 5, 200);
         }
@@ -75,6 +81,7 @@
         position: absolute;
         z-index: 2;
         right: 0;
+        top: 0;
         height: 50px;
         width: 50px;
         font-size: 25px;
@@ -131,17 +138,17 @@
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
         .delete {
-          bottom: -50px;
+          bottom: -35px;
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
         .edit {
-          right: 40px;
+          top: -35px;
           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         }
       }
     }
   }
-  &:not(:nth-child(1)){
+  &:not(:nth-child(1)) {
     border-top: 1.4px solid rgba(0, 0, 0, 0.5);
   }
 }
